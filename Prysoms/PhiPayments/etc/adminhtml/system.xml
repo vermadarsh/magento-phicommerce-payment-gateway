@@ -1,0 +1,107 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <section id="payment">
+            <group id="phipayment" translate="label" type="text" sortOrder="100" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Phi Payment Gateway</label>
+
+                <!-- Enable/Disable -->
+                <field id="active" translate="label" type="select" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Enable</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+
+                <!-- Title for the payment method -->
+                <field id="title" translate="label" type="text" sortOrder="2" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Title</label>
+                    <comment>Title shown on the frontend during checkout</comment>
+                </field>
+
+                <!-- Environment (live or sandbox) -->
+                <field id="environment" translate="label" type="select" sortOrder="3" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Environment</label>
+                    <source_model>Prysoms\PhiPayments\Model\Config\Source\Environment</source_model>
+                    <comment>Select Sandbox for testing, Live for production</comment>
+                </field>
+
+                <!-- API URLs -->
+                <field id="live_sale_api_url" translate="label" type="text" sortOrder="4" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Sale API URL</label>
+                    <comment>Use live environment's Sale API URL</comment>
+                    <depends>
+                        <field id="environment">live</field>
+                    </depends>
+                </field>
+
+                <field id="sandbox_sale_api_url" translate="label" type="text" sortOrder="4" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Sale API URL</label>
+                    <comment>Use sandbox environment's Sale API URL</comment>
+                    <depends>
+                        <field id="environment">sandbox</field>
+                    </depends>
+                </field>
+
+                <field id="live_tstat_api_url" translate="label" type="text" sortOrder="5" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Check Transaction Status API URL</label>
+                    <comment>Use live environment's Transaction Status Check API URL</comment>
+                    <depends>
+                        <field id="environment">live</field>
+                    </depends>
+                </field>
+
+                <field id="sandbox_tstat_api_url" translate="label" type="text" sortOrder="5" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Check Transaction Status API URL</label>
+                    <comment>Use sandbox environment's Transaction Status Check API URL</comment>
+                    <depends>
+                        <field id="environment">sandbox</field>
+                    </depends>
+                </field>
+
+                <field id="live_tref_api_url" translate="label" type="text" sortOrder="6" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Transaction Refund API URL</label>
+                    <comment>Use live environment's Transaction Refund API URL</comment>
+                    <depends>
+                        <field id="environment">live</field>
+                    </depends>
+                </field>
+
+                <field id="sandbox_tref_api_url" translate="label" type="text" sortOrder="6" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Transaction Refund API URL</label>
+                    <comment>Use sandbox environment's Transaction Refund API URL</comment>
+                    <depends>
+                        <field id="environment">sandbox</field>
+                    </depends>
+                </field>
+
+                <field id="live_merch_info" translate="label" type="text" sortOrder="7" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Merchant Information</label>
+                    <comment>Use live environment's Merchant Information(key-value pair). E.g.: [{&quot;merchId&quot;:&quot;xyz&quot;,&quot;hashKey&quot;:&quot;abc&quot;},{&quot;merchId&quot;:&quot;xyz1&quot;,&quot;hashKey&quot;:&quot;abc1&quot;},{&quot;merchId&quot;:&quot;xyz2&quot;,&quot;hashKey&quot;:&quot;abc2&quot;}]</comment>
+                    <depends>
+                        <field id="environment">live</field>
+                    </depends>
+                </field>
+
+                <field id="sandbox_merch_info" translate="label" type="text" sortOrder="7" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Merchant Information</label>
+                    <comment>Use sandbox environment's Merchant Information(key-value pair). E.g.: [{&quot;merchId&quot;:&quot;xyz&quot;,&quot;hashKey&quot;:&quot;abc&quot;},{&quot;merchId&quot;:&quot;xyz1&quot;,&quot;hashKey&quot;:&quot;abc1&quot;},{&quot;merchId&quot;:&quot;xyz2&quot;,&quot;hashKey&quot;:&quot;abc2&quot;}]</comment>
+                    <depends>
+                        <field id="environment">sandbox</field>
+                    </depends>
+                </field>
+
+                <!-- Debugging Mode -->
+                <field id="debug" translate="label" type="select" sortOrder="8" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Debug Mode</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <comment>Enable debug logging</comment>
+                </field>
+
+                <!-- Sort Order -->
+                <field id="sort_order" translate="label" type="text" sortOrder="9" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Sort Order</label>
+                    <comment>Position in the payment methods list during checkout</comment>
+                </field>
+            </group>
+        </section>
+    </system>
+</config>

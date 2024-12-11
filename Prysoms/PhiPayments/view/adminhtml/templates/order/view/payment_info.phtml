@@ -1,0 +1,17 @@
+<?php
+$additionalInfo = $block->getAdditionalInformation();
+?>
+
+<?php if (!empty($additionalInfo)) : ?>
+    <div class="admin__page-section-item">
+        <strong><?php echo __('Additional Payment Information:') ?></strong>
+        <div class="additional-payment-info">
+            <?php foreach ($additionalInfo as $key => $value): ?>
+                <div class="info-item">
+                    <span class="info-label"><?php echo ucfirst($key); ?>:</span>
+                    <span class="info-value"><?php echo $value; ?></span>
+                </div>
+            <?php endforeach; ?>
+        </div>
+    </div>
+<?php endif; ?>
